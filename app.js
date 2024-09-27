@@ -38,11 +38,37 @@ const asciiHeart = [
 
 
 const animateByChart = (ms) => {
+    let currentIndex = 0;
 
+    asciiHeart.forEach((linea, lineaIndex) => {
+
+        linea.split('').forEach((char, charIndex) => {
+            setTimeout(() => { 
+                process.stdout.write(char);
+                if(charIndex === linea.split('').length - 1){
+                   process.stdout.write('\n');
+                }
+            }, ms * currentIndex);
+            currentIndex++;
+        })
+
+//        setTimeout(() => {                                    //* Esta es otra opción para el salto de linea en vez de el IF.
+//            console.log('');
+//        }, ms * currentIndex);
+//        currentIndex++;
+    })
 }
+
 
 const animateByLine = (ms) => {
-
+    asciiHeart.forEach(function (element, index) {
+        setTimeout(function(){
+          console.log(element);
+        }, index * ms);
+})
 }
 
-// animateByChart()
+
+//console.log(animateByChart(100));
+                                                                //DESCOMENTAR CONSOLE.LOG PARA EJECUTARLOS
+//console.log(animateByLine(200));      
